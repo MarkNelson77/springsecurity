@@ -1,0 +1,5 @@
+package biz.global77.springsecurity.controller;
+
+public class RestController {
+
+}
