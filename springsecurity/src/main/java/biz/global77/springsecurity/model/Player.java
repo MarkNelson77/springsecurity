@@ -7,10 +7,18 @@ import javax.persistence.*;
 public class Player {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer playerId;
 	private Integer teamId;
 	private Integer gameId;
 	private String fullname;
+	
+	@ManyToOne
+	private Game game;
+	
+	@ManyToOne
+	private Team team;
+	
 	public Player() {
 		super();
 	}
@@ -43,6 +51,18 @@ public class Player {
 	}
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
+	}
+	public Game getGame() {
+		return game;
+	}
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	public Team getTeam() {
+		return team;
+	}
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 	
 }

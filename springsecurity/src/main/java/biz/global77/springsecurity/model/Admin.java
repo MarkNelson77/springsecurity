@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Admin {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer adminId;
 	private String username;
 	private String password;

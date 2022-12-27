@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Record {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer recordId;
 	private Integer gameId;
 	private String date;
@@ -52,4 +53,5 @@ public class Record {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 }

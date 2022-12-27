@@ -7,11 +7,16 @@ import javax.persistence.*;
 public class Result {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer resultId;
 	private Integer recordId;
 	private Integer teamId;
 	private Integer officialId;
 	private Integer score;
+	
+	@ManyToOne
+	private Official official;
+	
 	public Result() {
 		super();
 	}
@@ -52,4 +57,11 @@ public class Result {
 	public void setScore(Integer score) {
 		this.score = score;
 	}
+	public Official getOfficial() {
+		return official;
+	}
+	public void setOfficial(Official official) {
+		this.official = official;
+	}
+	
 }

@@ -7,10 +7,12 @@ import javax.persistence.*;
 public class Manager {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer managerId;
 	private Integer teamId;
 	private String fullname;
 	private Boolean access;
+	
 	public Manager() {
 		super();
 	}
@@ -44,5 +46,6 @@ public class Manager {
 	public void setAccess(Boolean access) {
 		this.access = access;
 	}
+	
 
 }
