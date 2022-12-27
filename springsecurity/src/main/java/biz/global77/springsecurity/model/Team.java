@@ -15,7 +15,7 @@ public class Team {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer teamId;
+	private long teamId;
 	private String name;
 	
 	@OneToMany(mappedBy = "team")
@@ -30,11 +30,11 @@ public class Team {
 		this.name = name;
 	}
 
-	public Integer getTeamId() {
+	public long getTeamId() {
 		return teamId;
 	}
 
-	public void setTeamId(Integer teamId) {
+	public void setTeamId(long teamId) {
 		this.teamId = teamId;
 	}
 
