@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import biz.global77.springsecurity.model.Game;
@@ -38,6 +39,18 @@ public class GameController {
 		gameService.saveGame(game);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/showFormForEdit/{id}")
+	public String showFormForEdit(@PathVariable ( value = "id") long id, Model model) {
+		
+		// Get game from the service
+		Game game = gameService.getGameById(id);
+		
+		// Set game as a model attribute to pre-populate the form
+		model.addAttribute("game", game);
+		return "forAuthenticated/edit_game";
+	}
+
 
 	
 }

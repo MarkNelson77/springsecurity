@@ -6,4 +6,5 @@ import biz.global77.springsecurity.model.Game;
 public interface GameService {
 	List<Game> getAllGames();
 	void saveGame(Game game);
+	Game getGameById(long id);
 }

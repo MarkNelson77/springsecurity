@@ -15,7 +15,7 @@ public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer gameId;
+	private long gameId;
 	private String category;
 	
 	@OneToMany(mappedBy = "game")
@@ -30,11 +30,11 @@ public class Game {
 		this.category = category;
 	}
 
-	public Integer getGameId() {
+	public long getGameId() {
 		return gameId;
 	}
 
-	public void setGameId(Integer gameId) {
+	public void setGameId(long gameId) {
 		this.gameId = gameId;
 	}
 
