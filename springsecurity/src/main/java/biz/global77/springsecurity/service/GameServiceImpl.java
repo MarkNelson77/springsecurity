@@ -19,4 +19,9 @@ public class GameServiceImpl implements GameService {
 		return gameRepository.findAll();
 	}
 
+	@Override
+	public void saveGame(Game game) {
+		this.gameRepository.save(game);
+	}
+
 }

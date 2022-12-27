@@ -83,8 +83,11 @@
 <br><br>
 
 <div align = "center">
+	<a th:href = "@{showGameForm}" class="-ml-96">Add Game</a>
+	
 	<h1 class="text-center text-2xl">List of Games</h1>
 	<br>
+	
 	<table class = "border-2">
 		<thead>
 			<tr>
@@ -97,7 +100,11 @@
 			<tr th:each = "game : ${listOfGames}">
 				<td th:text = "${game.gameId}" class = "text-center  border-2 px-8"> </td>
 				<td th:text = "${game.category}" class = "border-2 px-8"> </td>
-				<td class = "border-2 px-8"> Add Delete Edit</td>
+				<td class = "border-2 px-8"> 	
+					<a th:href = "@{showGameForm}" class = "text-blue-400 px-4">Add</a> 
+					<a th:href = "@{deleteGame}" class = "text-red-400 px-4">Delete</a> 
+					<a th:href = "@{editGame}" class = "text-green-400 px-4">Edit</a> 
+				</td>
 			</tr>
 		</tbody>
 	</table>
