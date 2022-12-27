@@ -5,7 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import biz.global77.springsecurity.model.Team;
 import biz.global77.springsecurity.repository.TeamRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TeamServiceImpl implements TeamService {
 
 	@Autowired

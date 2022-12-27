@@ -8,31 +8,31 @@ public class Record {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer recordId;
-	private Integer gameId;
+	private long recordId;
+	private long gameId;
 	private String date;
 	private String time;
 	private String description;
 	public Record() {
 		super();
 	}
-	public Record(Integer gameId, String date, String time, String description) {
+	public Record(long gameId, String date, String time, String description) {
 		super();
 		this.gameId = gameId;
 		this.date = date;
 		this.time = time;
 		this.description = description;
 	}
-	public Integer getRecordId() {
+	public long getRecordId() {
 		return recordId;
 	}
-	public void setRecordId(Integer recordId) {
+	public void setRecordId(long recordId) {
 		this.recordId = recordId;
 	}
-	public Integer getGameId() {
+	public long getGameId() {
 		return gameId;
 	}
-	public void setGameId(Integer gameId) {
+	public void setGameId(long gameId) {
 		this.gameId = gameId;
 	}
 	public String getDate() {
