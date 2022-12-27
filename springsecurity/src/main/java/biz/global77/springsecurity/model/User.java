@@ -1,9 +1,12 @@
 package biz.global77.springsecurity.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -53,12 +56,12 @@ public class User implements UserDetails {
 	        this.password = password;
 	    }
 	
-	    @Override
-	  public Set<GrantedAuthority> getAuthorities() {
-	        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-	        authorities.add(new SimpleGrantedAuthority("USER"));
-	        return authorities;
-	    }
+		@Override
+		public Collection<? extends GrantedAuthority> getAuthorities() {
+			List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+				authorities.add(new SimpleGrantedAuthority(role));
+			return authorities;
+		}
 	 
 	    @Override
 	   public boolean isAccountNonExpired() {
