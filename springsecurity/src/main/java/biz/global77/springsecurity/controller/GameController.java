@@ -14,9 +14,9 @@ public class GameController {
 	private GameService gameService;
 
 	//Display List of Games
-	@GetMapping("/")
+	@GetMapping("/games")
 	public String viewGames(Model model) {
 		model.addAttribute("listOfGames", gameService.getAllGames());
-		return "forAuthenticated/page3";
+		return "forAuthenticated/listOfGames";
 	}
 }

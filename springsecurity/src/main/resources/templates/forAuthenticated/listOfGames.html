@@ -82,9 +82,26 @@
 <h1 class="text-center text-3xl">Hello Admin!</h1>
 <br><br>
 
-
-<h1 class="text-center text-2xl"> <a href = "/games" >View Game List</a></h1>
-
+<div align = "center">
+	<h1 class="text-center text-2xl">List of Games</h1>
+	<br>
+	<table class = "border-2">
+		<thead>
+			<tr>
+				<th class = "border-2 px-8">Game ID</th>
+				<th class = "border-2 px-8">Category</th>
+				<th class = "border-2 px-8">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "game : ${listOfGames}">
+				<td th:text = "${game.gameId}" class = "text-center  border-2 px-8"> </td>
+				<td th:text = "${game.category}" class = "border-2 px-8"> </td>
+				<td class = "border-2 px-8"> Add Delete Edit</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 
 
