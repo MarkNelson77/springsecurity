@@ -37,6 +37,12 @@ public class GameServiceImpl implements GameService {
 		return game;
 	}
 
+	@Override
+	public void deleteGameById(long id) {
+		this.gameRepository.deleteById(id);
+	}
+
+
 
 
 

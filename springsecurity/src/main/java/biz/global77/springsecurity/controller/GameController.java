@@ -37,7 +37,7 @@ public class GameController {
 	public String saveGame(@ModelAttribute("game") Game game) {
 		// Save game to database
 		gameService.saveGame(game);
-		return "redirect:/";
+		return "redirect:/games";
 	}
 	
 	@GetMapping("/showFormForEdit/{id}")
@@ -50,7 +50,14 @@ public class GameController {
 		model.addAttribute("game", game);
 		return "forAuthenticated/edit_game";
 	}
-
+	
+	@GetMapping("/deleteGame/{id}")
+	public String deleteGame(@PathVariable (value = "id") long id) {
+		
+		// Call delete game method 
+		this.gameService.deleteGameById(id);
+		return "redirect:/games";
+	}
 
 	
 }
