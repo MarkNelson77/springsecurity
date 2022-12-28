@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 
@@ -19,11 +19,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-<title>Manager Page</title>
+<title>Record List</title>
+<link th:href = "@{/css/table.css}" rel="stylesheet">
+
 </head>
 
 <body>
-
 <!-- Navbar -->
   <nav class="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
     <div class="px-6 w-full flex flex-wrap items-center justify-between">
@@ -55,20 +56,20 @@
       </div>
       <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentY">
         <ul class="navbar-nav mr-auto lg:flex lg:flex-row">
-           <li class="nav-item ml-5">
+          <li class="nav-item ml-5">
             <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/" data-mdb-ripple="true" data-mdb-ripple-color="light">Home</a>
           </li>
           <li class="nav-item ml-5">
-            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="admin" data-mdb-ripple="true" data-mdb-ripple-color="light">Admin</a>
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/admin" data-mdb-ripple="true" data-mdb-ripple-color="light">Admin</a>
           </li>
           <li class="nav-item ml-10">
-            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="official" data-mdb-ripple="true" data-mdb-ripple-color="light">Official</a>
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/official" data-mdb-ripple="true" data-mdb-ripple-color="light">Official</a>
           </li>
           <li class="nav-item ml-10">
-            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="manager" data-mdb-ripple="true" data-mdb-ripple-color="light">Manager</a>
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/manager" data-mdb-ripple="true" data-mdb-ripple-color="light">Manager</a>
           </li>
           <li class="nav-item mb-2 lg:mb-0 mr-96 ml-10">
-            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="all" data-mdb-ripple="true" data-mdb-ripple-color="light">All</a>
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/all" data-mdb-ripple="true" data-mdb-ripple-color="light">All</a>
           </li>
           <li class="nav-item mb-2 lg:mb-0 ml-96">
             <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/logout" data-mdb-ripple="true" data-mdb-ripple-color="light">Logout</a>
@@ -78,18 +79,50 @@
     </div>
   </nav>
   <!-- Navbar -->
-  
-  <br><br>
-  <h1 class="text-center text-3xl">Hello Manager!</h1>
-  
-  <br><br>
 
-<div class = "flex justify-center">
-	<h1 class="text-2xl my-8 mx-4"> <a href = "#" >View Schedule</a></h1>
-	<h1 class="text-2xl my-8 mx-4"> <a href = "/players" >View Players</a></h1>
-	<h1 class="text-2xl my-8 mx-4"> <a href = "#" >View Records</a></h1>
+<br><br>
+<h1 class="text-center text-3xl">Hello Admin!</h1>
+<br>
+
+<div align = "center">
+	<h1 class="text-center text-3xl">(Under Construction!)</h1>
+	<br><br>
+	<h1 class="text-center text-2xl">List of Records</h1>
+	<br>
+	
+	<table class="table-auto">
+		<thead>
+			<tr>
+				<th class = "border-2 px-8">Record ID</th>
+				<th class = "border-2 px-8">Date</th>
+				<th class = "border-2 px-8">Time</th>
+				<th class = "border-2 px-8">Description</th>
+				<th class = "border-2 px-8">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "record : ${listOfRecords}">
+				<td th:text = "${record.recordId}" class = "text-center  border-2 px-8"> </td>
+				<td th:text = "${record.date}" class = "border-2 px-8"> </td>
+				<td th:text = "${record.time}" class = "border-2 px-8"> </td>
+				<td th:text = "${record.description}" class = "border-2 px-8"> </td>
+				<td class = "border-2 px-8"> 	
+					<a th:href = "@{/showFormForEditRecord/{id}(id=${record.recordId})}" 
+						class = "text-green-400 px-4">Edit</a> 
+					<a th:href="@{/deleteRecord/{id}(id=${record.recordId})}"
+						class = "text-red-400 px-4">Delete</a> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br><br>
+	<a th:href = "@{showNewRecordForm}" 
+	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+	Add Record</a> 
 </div>
-  
+
+
 
 </body>
 </html>

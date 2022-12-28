@@ -21,7 +21,7 @@ public class RecordController {
 	@GetMapping("/records")
 	public String viewRecords(Model model) {
 		model.addAttribute("listOfRecords", recordService.getAllRecords());
-		return "forAuthenticated/listOfRecords";
+		return "forAuthenticated/records";
 	}
 	
 	//Adding New Record
