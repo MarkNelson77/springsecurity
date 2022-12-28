@@ -8,9 +8,9 @@ public class Player {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer playerId;
-	private Integer teamId;
-	private Integer gameId;
+	private long playerId;
+	private long teamId;
+	private long gameId;
 	private String fullname;
 	
 	@ManyToOne
@@ -22,28 +22,28 @@ public class Player {
 	public Player() {
 		super();
 	}
-	public Player(Integer teamId, Integer gameId, String fullname) {
+	public Player(long teamId, long gameId, String fullname) {
 		super();
 		this.teamId = teamId;
 		this.gameId = gameId;
 		this.fullname = fullname;
 	}
-	public Integer getPlayerId() {
+	public long getPlayerId() {
 		return playerId;
 	}
-	public void setPlayerId(Integer playerId) {
+	public void setPlayerId(long playerId) {
 		this.playerId = playerId;
 	}
-	public Integer getTeamId() {
+	public long getTeamId() {
 		return teamId;
 	}
-	public void setTeamId(Integer teamId) {
+	public void setTeamId(long teamId) {
 		this.teamId = teamId;
 	}
-	public Integer getGameId() {
+	public long getGameId() {
 		return gameId;
 	}
-	public void setGameId(Integer gameId) {
+	public void setGameId(long gameId) {
 		this.gameId = gameId;
 	}
 	public String getFullname() {
