@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import biz.global77.springsecurity.model.Record;
 import biz.global77.springsecurity.repository.RecordRepository;
 
+@Service
 public class RecordServiceImpl implements RecordService {
 	
 	@Autowired

@@ -21,7 +21,7 @@ public class TeamController {
 	@GetMapping("/teams")
 	public String viewTeams(Model model) {
 		model.addAttribute("listOfTeams", teamService.getAllTeams());
-		return "forAuthenticated/listOfTeams";
+		return "forAuthenticated/teams";
 	}
 	
 	//Adding New Team
@@ -40,8 +40,8 @@ public class TeamController {
 		return "redirect:/teams";
 	}
 	
-	@GetMapping("/showFormForEdit/{id}")
-	public String showFormForEdit(@PathVariable ( value = "id") long id, Model model) {
+	@GetMapping("/showFormForEditTeam/{id}")
+	public String showFormForEditTeam(@PathVariable ( value = "id") long id, Model model) {
 		
 		// Get team from the service
 		Team team = teamService.getTeamById(id);

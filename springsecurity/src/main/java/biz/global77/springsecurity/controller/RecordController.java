@@ -40,8 +40,8 @@ public class RecordController {
 		return "redirect:/records";
 	}
 	
-	@GetMapping("/showFormForEdit/{id}")
-	public String showFormForEdit(@PathVariable ( value = "id") long id, Model model) {
+	@GetMapping("/showFormForEditRecord/{id}")
+	public String showFormForEditRecord(@PathVariable ( value = "id") long id, Model model) {
 		
 		// Get record from the service
 		Record record = recordService.getRecordById(id);

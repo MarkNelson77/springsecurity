@@ -21,7 +21,7 @@ public class GameController {
 	@GetMapping("/games")
 	public String viewGames(Model model) {
 		model.addAttribute("listOfGames", gameService.getAllGames());
-		return "forAuthenticated/listOfGames";
+		return "forAuthenticated/games";
 	}
 	
 	//Adding New Game
