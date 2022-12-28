@@ -1,10 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/dist/output.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<title>Player List</title>
+<link th:href = "@{/css/table.css}" rel="stylesheet">
+
 </head>
+
 <body>
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
+    <div class="px-6 w-full flex flex-wrap items-center justify-between">
+      <div class="flex items-center">
+        <button
+          class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out mr-2"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContentY"
+          aria-controls="navbarSupportedContentY"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            class="w-5"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentY">
+        <ul class="navbar-nav mr-auto lg:flex lg:flex-row">
+          <li class="nav-item ml-5">
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/" data-mdb-ripple="true" data-mdb-ripple-color="light">Home</a>
+          </li>
+          <li class="nav-item ml-5">
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/admin" data-mdb-ripple="true" data-mdb-ripple-color="light">Admin</a>
+          </li>
+          <li class="nav-item ml-10">
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/official" data-mdb-ripple="true" data-mdb-ripple-color="light">Official</a>
+          </li>
+          <li class="nav-item ml-10">
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/manager" data-mdb-ripple="true" data-mdb-ripple-color="light">Manager</a>
+          </li>
+          <li class="nav-item mb-2 lg:mb-0 mr-96 ml-10">
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/page/all" data-mdb-ripple="true" data-mdb-ripple-color="light">All</a>
+          </li>
+          <li class="nav-item mb-2 lg:mb-0 ml-96">
+            <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="/logout" data-mdb-ripple="true" data-mdb-ripple-color="light">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+<br><br>
+<h1 class="text-center text-3xl">Hello Manager!</h1>
+<br>
+
+<div align = "center">
+	
+	<h1 class="text-center text-2xl">List of Players</h1>
+	<br>
+	
+	<table class="table-auto">
+		<thead>
+			<tr>
+				<th class = "border-2 px-8">Player ID</th>
+				<th class = "border-2 px-8">Team ID</th>
+				<th class = "border-2 px-8">Game ID</th>
+				<th class = "border-2 px-8">Full Name</th>
+				<th class = "border-2 px-8">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "player : ${listOfPlayers}">
+				<td th:text = "${player.playerId}" class = "text-center  border-2 px-8"> </td>
+				<td th:text = "${player.teamId}" class = "border-2 px-8"> </td>
+				<td th:text = "${player.gameId}" class = "border-2 px-8"> </td>
+				<td th:text = "${player.fullname}" class = "border-2 px-8"> </td>
+				<td class = "border-2 px-8"> 	
+					<a th:href = "@{/showFormForEditPlayer/{id}(id=${player.playerId})}" 
+						class = "text-green-400 px-4">Edit</a> 
+					<a th:href="@{/deletePlayer/{id}(id=${player.playerId})}"
+						class = "text-red-400 px-4">Delete</a> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br><br>
+	<a th:href = "@{showNewPlayerForm}" 
+	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+	Add Player</a> 
+</div>
+
+
 
 </body>
 </html>
+]

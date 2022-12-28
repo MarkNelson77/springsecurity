@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/dist/output.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<title>Edit Player</title>
 </head>
+
 <body>
+
+	<div class="content-center">
+		<div class="w-full max-w-xs mx-auto mt-20">
+		  <form action="#" th:action="@{/savePlayer}" th:object="${player}" method="POST"
+		  	class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+		  	
+		  	<!-- Add hidden form field to handle update -->
+		  	<input type="hidden" th:field="*{playerId}" />
+		  	<input type="hidden" th:field="*{teamId}" />
+		  	<input type="hidden" th:field="*{gameId}" />
+		  	
+		    <div class="mb-4">
+		      <label class="block text-gray-700 text-2xl font-bold mb-2 text-center mb-6" for="fullname">
+		        Edit Player's Name
+		      </label>
+		      <input type="text" th:field="*{fullname}"  placeholder="Player Fullname" 
+		      	class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+		    </div>
+		    
+		    <div class="flex items-center justify-between">
+		      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+		       Update Player
+		      </button>
+		    </div>
+		  </form>
+		</div>
+	</div>
 
 </body>
 </html>
